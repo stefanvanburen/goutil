@@ -1,7 +1,7 @@
 // Blatantly ripped from https://gobyexample.com/collection-functions
 // Also added similar functions for integer arrays
 
-package main
+package goutil
 
 // Index returns the first index of the target string `t`, or
 // -1 if no match is found.

@@ -1,4 +1,4 @@
-package main
+package goutil
 
 // IsPrime checks if an int is prime
 func IsPrime(n int) bool {
