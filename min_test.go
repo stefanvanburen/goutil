@@ -15,5 +15,5 @@ func TestMin(t *testing.T) {
 	}
 
 	assert.Equal(t, Min(x), -64, "Min should be -64")
-	assert.Equal(t, Min(y), -6, "Min should be -6")
+	assert.Equal(t, Min(y), 7, "Min should be 7")
 }
