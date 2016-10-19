@@ -15,7 +15,7 @@ func Min(vals []int) (min int) {
 
 // Min64 returns the minimum value of an int64 slice
 func Min64(vals []int64) (min int64) {
-	min = int64(math.MaxInt64)
+	min = math.MaxInt64
 	for _, v := range vals {
 		if v < min {
 			min = v

@@ -15,7 +15,7 @@ func Max(vals []int) (max int) {
 
 // Max64 returns the maximum value of an int64 slice
 func Max64(vals []int64) (max int64) {
-	max = int64(math.MinInt64)
+	max = math.MinInt64
 	for _, v := range vals {
 		if v > max {
 			max = v
