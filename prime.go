@@ -2,7 +2,10 @@ package goutil
 
 // IsPrime checks if an int is prime
 func IsPrime(n int) bool {
-	for b := Sqrt(n); b >= 1; b-- {
+	if n == 1 {
+		return false
+	}
+	for b := SqrtInt(n); b >= 1; b-- {
 		if b == 1 {
 			return true
 		}
@@ -15,7 +18,10 @@ func IsPrime(n int) bool {
 
 // IsPrime64 checks if an int64 is prime
 func IsPrime64(n int64) bool {
-	for b := Sqrt64(n); b >= 1; b-- {
+	if n == 1 {
+		return false
+	}
+	for b := SqrtInt64(n); b >= 1; b-- {
 		if b == 1 {
 			return true
 		}
