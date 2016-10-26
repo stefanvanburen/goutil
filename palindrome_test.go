@@ -1,6 +1,10 @@
 package goutil
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestPalindrome(t *testing.T) {
 	var tests = []struct {
@@ -14,10 +18,7 @@ func TestPalindrome(t *testing.T) {
 	}
 
 	for _, x := range tests {
-		c := IsPalindrome(x.a)
-		if c != x.out {
-			t.Errorf("IsPalindrome(%s) => %t, want %t", x.a, c, x.out)
-		}
+		assert.Equal(t, IsPalindrome(x.a), x.out, "Should be equal")
 	}
 
 }

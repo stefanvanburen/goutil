@@ -1,12 +1,14 @@
 package goutil
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestPrimeSieve(t *testing.T) {
 	x := PrimeSieve(1000)
 	for _, e := range x {
-		if !IsPrime(e) {
-			t.Errorf("Not prime element %d", e)
-		}
+		assert.False(IsPrime(e), "Not prime element")
 	}
 }
