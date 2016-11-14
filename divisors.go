@@ -2,11 +2,26 @@ package goutil
 
 // Divisors returns an integer slice of the proper divisors of an integer
 func Divisors(n int) (divisors []int) {
+	count := 1
 	divisors = append(divisors, 1)
-	for i := 2; i < SqrtInt(n); i++ {
+	for i := 2; i <= SqrtInt(n); i++ {
 		if n%i == 0 {
-			divisors = append(divisors, i)
-			divisors = append(divisors, n/i)
+			// Rather than sorting at the end, we can take advantage of the
+			// fact that i > previous i values and n/i < previous n/i values
+			// to keep the divisors array sorted
+			// So, we insert i and n/i in consecutive positions after the previous
+			// i value's location
+
+			// Free up space for two more divisors
+			divisors = append(divisors, 0)
+			divisors = append(divisors, 0)
+
+			// Copy the values past count back two positions
+			copy(divisors[count+2:], divisors[count:])
+
+			divisors[count] = i
+			divisors[count+1] = n / i
+			count++
 		}
 	}
 	return
