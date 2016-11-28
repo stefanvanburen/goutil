@@ -13,15 +13,23 @@ func Divisors(n int) (divisors []int) {
 			// i value's location
 
 			// Free up space for two more divisors
-			divisors = append(divisors, 0)
-			divisors = append(divisors, 0)
+			if i != n/i {
+				divisors = append(divisors, 0)
+				divisors = append(divisors, 0)
 
-			// Copy the values past count back two positions
-			copy(divisors[count+2:], divisors[count:])
+				// Copy the values past count back two positions
+				copy(divisors[count+2:], divisors[count:])
 
-			divisors[count] = i
-			divisors[count+1] = n / i
-			count++
+				divisors[count] = i
+				divisors[count+1] = n / i
+				count++
+			} else {
+				// This is specifically for the case of adding Sqrt(n), where
+				// we should only add the number once
+				divisors = append(divisors, 0)
+				copy(divisors[count+1:], divisors[count:])
+				divisors[count] = i
+			}
 		}
 	}
 	return
