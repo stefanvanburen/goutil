@@ -12,6 +12,7 @@ var divisortests = []struct {
 }{
 	{28, []int{1, 2, 4, 7, 14}},
 	{12, []int{1, 2, 3, 4, 6}},
+	{16, []int{1, 2, 4, 8}},
 }
 
 func TestDivisors(t *testing.T) {
