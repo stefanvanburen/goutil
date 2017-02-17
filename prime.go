@@ -33,19 +33,18 @@ func IsPrime64(n int64) bool {
 }
 
 // PrimeSieve implements the Sieve of Eratosthenes
-func PrimeSieve(len int) []int {
-	bools := make([]bool, len)
+func PrimeSieve(max int) []int {
+	bools := make([]bool, max)
 	var primes []int
-	var i, count int
-	for i = 0; i < len; i++ {
+	var i int
+	for i = 0; i < max; i++ {
 		bools[i] = true
 	}
 	// Sieve
-	for i = 2; i < len; i++ {
+	for i = 2; i < max; i++ {
 		if bools[i] {
-			count++
 			primes = append(primes, i)
-			for k := 2; i*k < len; k++ {
+			for k := 2; i*k < max; k++ {
 				bools[i*k] = false
 			}
 		}
