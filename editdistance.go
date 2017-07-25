@@ -1,53 +1,85 @@
 package goutil
 
-import "strings"
+import (
+	"errors"
+	"strings"
+)
+
+type matrix [][]int
+
+type costFunc func(matrix, int, int, int) int
+
+// LevenschteinCost is used for best global alignment
+func LevenschteinCost(m matrix, i, j, cost int) int {
+	return Min([]int{
+		m[i-1][j] + 1,
+		m[i][j-1] + 1,
+		m[i-1][j-1] + cost,
+	})
+}
+
+// SmithWatermanCost is used for best local alignment
+func SmithWatermanCost(m matrix, i, j, cost int) int {
+	return Min([]int{
+		0,
+		m[i-1][j] + 1,
+		m[i][j-1] + 1,
+		m[i-1][j-1] + cost,
+	})
+}
 
 // EditDistance1 calculates the edit (or Levenschtein) distance between two
-// strings by creating an entire backtrackable matrix
-func EditDistance1(s, t string) int {
+// strings by creating an entire backtraceable matrix
+func EditDistance1(s, t string) (int, error) {
+	m, err := EditDistanceMatrix(s, t, LevenschteinCost)
+	if err != nil {
+		return 0, err
+	}
+	return m[len(s)][len(t)], nil
+}
+
+// EditDistanceMatrix creates a backtraceable matrix
+func EditDistanceMatrix(s, t string, costFn costFunc) ([][]int, error) {
 	if checkTrivial(s, t) {
-		return 0
+		return nil, errors.New("Trivial Matrix detected")
 	}
 
 	y := len(s) + 1
 	x := len(t) + 1
 
-	matrix := make([][]int, y)
+	m := make([][]int, y)
 
-	for z := range matrix {
-		matrix[z] = make([]int, x)
+	for z := range m {
+		m[z] = make([]int, x)
 	}
 
 	for i := 1; i < y; i++ {
-		matrix[i][0] = i
+		m[i][0] = i
 	}
 	for j := 1; j < x; j++ {
-		matrix[0][j] = j
+		m[0][j] = j
 	}
+
+	var cost int
 
 	for i := 1; i < y; i++ {
 		for j := 1; j < x; j++ {
-			var cost int
+			cost = 0
 			if s[i-1] != t[j-1] {
 				cost = 1
 			}
-			b := []int{
-				matrix[i-1][j] + 1,
-				matrix[i][j-1] + 1,
-				matrix[i-1][j-1] + cost,
-			}
-			matrix[i][j] = Min(b)
+			m[i][j] = costFn(m, i, j, cost)
 		}
 	}
-	return matrix[len(s)][len(t)]
+	return m, nil
 }
 
 // EditDistance2 calculates the edit (or Levenschtein) distance between two
 // strings by just using the previous row and the previous values in the
 // current row. This saves memory, but requires copying rows forward.
-func EditDistance2(s, t string) int {
+func EditDistance2(s, t string) (int, error) {
 	if checkTrivial(s, t) {
-		return 0
+		return 0, errors.New("fuck")
 	}
 
 	v0 := make([]int, len(t)+1)
@@ -75,7 +107,7 @@ func EditDistance2(s, t string) int {
 			v0[j] = v1[j]
 		}
 	}
-	return v1[len(t)]
+	return v1[len(t)], nil
 }
 
 func checkTrivial(s, t string) bool {

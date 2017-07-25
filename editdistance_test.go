@@ -1,6 +1,10 @@
 package goutil
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestEditDistance(t *testing.T) {
 	var tests = []struct {
@@ -15,13 +19,9 @@ func TestEditDistance(t *testing.T) {
 	}
 
 	for _, x := range tests {
-		c := EditDistance1(x.a, x.b)
-		d := EditDistance2(x.a, x.b)
-		if c != x.out {
-			t.Errorf("EditDistance1(%s, %s) => %d, want %d", x.a, x.b, c, x.out)
-		}
-		if d != x.out {
-			t.Errorf("EditDistance2(%s, %s) => %d, want %d", x.a, x.b, d, x.out)
-		}
+		editdistance1, _ := EditDistance1(x.a, x.b)
+		editdistance2, _ := EditDistance2(x.a, x.b)
+		assert.Equal(t, editdistance1, x.out, "Should be equal")
+		assert.Equal(t, editdistance2, x.out, "Should be equal")
 	}
 }
