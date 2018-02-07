@@ -28,16 +28,6 @@ func SmithWatermanCost(m matrix, i, j, cost int) int {
 	})
 }
 
-// EditDistance1 calculates the edit (or Levenschtein) distance between two
-// strings by creating an entire backtraceable matrix
-func EditDistance1(s, t string) (int, error) {
-	m, err := EditDistanceMatrix(s, t, LevenschteinCost)
-	if err != nil {
-		return 0, err
-	}
-	return m[len(s)][len(t)], nil
-}
-
 // EditDistanceMatrix creates a backtraceable matrix
 func EditDistanceMatrix(s, t string, costFn costFunc) ([][]int, error) {
 	if checkTrivial(s, t) {
@@ -74,12 +64,22 @@ func EditDistanceMatrix(s, t string, costFn costFunc) ([][]int, error) {
 	return m, nil
 }
 
+// EditDistance1 calculates the edit (or Levenschtein) distance between two
+// strings by creating an entire backtraceable matrix
+func EditDistance1(s, t string) (int, error) {
+	m, err := EditDistanceMatrix(s, t, LevenschteinCost)
+	if err != nil {
+		return 0, err
+	}
+	return m[len(s)][len(t)], nil
+}
+
 // EditDistance2 calculates the edit (or Levenschtein) distance between two
 // strings by just using the previous row and the previous values in the
 // current row. This saves memory, but requires copying rows forward.
 func EditDistance2(s, t string) (int, error) {
 	if checkTrivial(s, t) {
-		return 0, errors.New("fuck")
+		return 0, errors.New("Trivial Matrix detected")
 	}
 
 	v0 := make([]int, len(t)+1)

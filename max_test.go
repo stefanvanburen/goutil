@@ -6,14 +6,18 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestMax(t *testing.T) {
-	x := []int{
-		-17, 5, 2, 18, 20, -64, 8,
-	}
-	y := []int{
-		-10, -9, -8, -6,
+func TestMaxInt(t *testing.T) {
+	var tests = []struct {
+		in  []int
+		out int
+	}{
+		{[]int{-17, 5, 2, 18, 20, -64, 8}, 20},
+		{[]int{-10, -9, -8, -6}, -6},
 	}
 
-	assert.Equal(t, Max(x), 20, "Max should be 20")
-	assert.Equal(t, Max(y), -6, "Max should be -6")
+	for _, tt := range tests {
+		out, err := MaxInt(tt.in)
+		assert.NoError(t, err, "ERROR!!!")
+		assert.Equal(t, out, tt.out, "DID NOT MATCH")
+	}
 }

@@ -8,7 +8,7 @@ import (
 
 func TestPalindrome(t *testing.T) {
 	var tests = []struct {
-		a   string
+		in  string
 		out bool
 	}{
 		{"hello", false},
@@ -18,7 +18,7 @@ func TestPalindrome(t *testing.T) {
 	}
 
 	for _, x := range tests {
-		assert.Equal(t, IsPalindrome(x.a), x.out, "Should be equal")
+		assert.Equal(t, IsPalindrome(x.in), x.out, "Should be equal")
 	}
 
 }

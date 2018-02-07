@@ -2,6 +2,8 @@ package goutil
 
 import "errors"
 
+// XORBytes returns the result of XORing together two byte slices, byte by byte
+// It's required that the input slices are the same length
 func XORBytes(a, b []byte) ([]byte, error) {
 	if len(a) != len(b) {
 		return nil, errors.New("Buffers must be same length")

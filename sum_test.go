@@ -16,6 +16,6 @@ func TestSum(t *testing.T) {
 	}
 
 	for _, x := range tests {
-		assert.Equal(t, Sum(x.in), x.out, "Should be equal")
+		assert.Equal(t, SumInt(x.in), x.out, "Should be equal")
 	}
 }

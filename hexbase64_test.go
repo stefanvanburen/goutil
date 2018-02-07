@@ -20,5 +20,4 @@ func TestHexToBase64(t *testing.T) {
 	out2, _ := HexToBase64(HexBytes)
 
 	assert.Equal(t, out2, Base64Bytes, "Should match")
-
 }

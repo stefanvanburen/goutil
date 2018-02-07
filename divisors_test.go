@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var divisortests = []struct {
+var tests = []struct {
 	n        int
 	divisors []int
 }{
@@ -16,7 +16,7 @@ var divisortests = []struct {
 }
 
 func TestDivisors(t *testing.T) {
-	for _, x := range divisortests {
+	for _, x := range tests {
 		out := Divisors(x.n)
 		assert.Equal(t, out, x.divisors, "Should be equal")
 	}
