@@ -18,7 +18,7 @@ func TestSumInt(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt(tc.in), tc.out, "Should be equal")
+			assert.Equal(t, SumInt(tc.in), tc.out)
 		})
 	}
 }
@@ -35,7 +35,7 @@ func TestSumInt8(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt8(tc.in), tc.out, "Should be equal")
+			assert.Equal(t, SumInt8(tc.in), tc.out)
 		})
 	}
 }
@@ -52,7 +52,7 @@ func TestSumInt16(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt16(tc.in), tc.out, "Should be equal")
+			assert.Equal(t, SumInt16(tc.in), tc.out)
 		})
 	}
 }
@@ -69,7 +69,7 @@ func TestSumInt32(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt32(tc.in), tc.out, "Should be equal")
+			assert.Equal(t, SumInt32(tc.in), tc.out)
 		})
 	}
 }
@@ -86,7 +86,7 @@ func TestSumInt64(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt64(tc.in), tc.out, "Should be equal")
+			assert.Equal(t, SumInt64(tc.in), tc.out)
 		})
 	}
 }
