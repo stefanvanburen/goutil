@@ -5,31 +5,32 @@ func Divisors(n int) (divisors []int) {
 	count := 1
 	divisors = append(divisors, 1)
 	for i := 2; i <= SqrtInt(n); i++ {
-		if n%i == 0 {
-			// Rather than sorting at the end, we can take advantage of the
-			// fact that i > previous i values and n/i < previous n/i values
-			// to keep the divisors array sorted
-			// So, we insert i and n/i in consecutive positions after the previous
-			// i value's location
+		if n%i != 0 {
+			continue
+		}
+		// Rather than sorting at the end, we can take advantage of the
+		// fact that i > previous i values and n/i < previous n/i values
+		// to keep the divisors array sorted
+		// So, we insert i and n/i in consecutive positions after the previous
+		// i value's location
 
-			// Free up space for two more divisors
-			if i != n/i {
-				divisors = append(divisors, 0)
-				divisors = append(divisors, 0)
+		// Free up space for two more divisors
+		if i != n/i {
+			divisors = append(divisors, 0)
+			divisors = append(divisors, 0)
 
-				// Copy the values past count back two positions
-				copy(divisors[count+2:], divisors[count:])
+			// Copy the values past count back two positions
+			copy(divisors[count+2:], divisors[count:])
 
-				divisors[count] = i
-				divisors[count+1] = n / i
-				count++
-			} else {
-				// This is specifically for the case of adding Sqrt(n), where
-				// we should only add the number once
-				divisors = append(divisors, 0)
-				copy(divisors[count+1:], divisors[count:])
-				divisors[count] = i
-			}
+			divisors[count] = i
+			divisors[count+1] = n / i
+			count++
+		} else {
+			// This is specifically for the case of adding Sqrt(n), where
+			// we should only add the number once
+			divisors = append(divisors, 0)
+			copy(divisors[count+1:], divisors[count:])
+			divisors[count] = i
 		}
 	}
 	return
