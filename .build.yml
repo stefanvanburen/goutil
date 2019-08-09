@@ -1,4 +1,6 @@
 image: debian/stable
+packages:
+    - curl
 sources:
     - https://github.com/svanburen/goutil
 tasks:
