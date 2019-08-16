@@ -1,15 +1,9 @@
-image: debian/stable
+image: archlinux
 packages:
-    - curl
+    - go
 sources:
     - https://github.com/svanburen/goutil
 tasks:
-    - go_toolchain: |
-        go_version="$(curl https://golang.org/VERSION?m=text)"
-        curl -O https://dl.google.com/go/$go_version.linux-amd64.tar.gz
-        sudo tar -C /usr/local -xzf $go_version.linux-amd64.tar.gz
-        sudo ln -s /usr/local/go/bin/go /usr/bin/go
-        go env
     - test: |
         cd goutil
         go test -race -v ./...
