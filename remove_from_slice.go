@@ -8,5 +8,6 @@ func RemoveStringFromSlice(s string, sl []string) ([]string, bool) {
 			return append(sl[:i], sl[i+1:]...), true
 		}
 	}
+
 	return sl, false
 }

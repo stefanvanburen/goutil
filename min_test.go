@@ -6,14 +6,17 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestMin(t *testing.T) {
-	x := []int{
-		-17, 5, 2, 18, 20, -64, 8,
-	}
-	y := []int{
-		10, 9, 8, 7,
+func TestMinInt(t *testing.T) {
+	var tests = []struct {
+		in  []int
+		out int
+	}{
+		{[]int{-17, 5, 2, 18, 20, -64, 8}, -64},
+		{[]int{-10, -9, -8, -6}, -10},
 	}
 
-	assert.Equal(t, Min(x), -64, "Min should be -64")
-	assert.Equal(t, Min(y), 7, "Min should be 7")
+	for _, tt := range tests {
+		out := MinInt(tt.in)
+		assert.Equal(t, out, tt.out)
+	}
 }

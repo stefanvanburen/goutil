@@ -9,9 +9,11 @@ type matrix [][]int
 
 type costFunc func(matrix, int, int, int) int
 
+var ErrTrivialMatrix = errors.New("trivial matrix")
+
 // LevenschteinCost is used for best global alignment
 func LevenschteinCost(m matrix, i, j, cost int) int {
-	return Min([]int{
+	return MinInt([]int{
 		m[i-1][j] + 1,
 		m[i][j-1] + 1,
 		m[i-1][j-1] + cost,
@@ -20,7 +22,7 @@ func LevenschteinCost(m matrix, i, j, cost int) int {
 
 // SmithWatermanCost is used for best local alignment
 func SmithWatermanCost(m matrix, i, j, cost int) int {
-	return Min([]int{
+	return MinInt([]int{
 		0,
 		m[i-1][j] + 1,
 		m[i][j-1] + 1,
@@ -31,7 +33,7 @@ func SmithWatermanCost(m matrix, i, j, cost int) int {
 // EditDistanceMatrix creates a backtraceable matrix
 func EditDistanceMatrix(s, t string, costFn costFunc) ([][]int, error) {
 	if checkTrivial(s, t) {
-		return nil, errors.New("Trivial Matrix detected")
+		return nil, ErrTrivialMatrix
 	}
 
 	y := len(s) + 1
@@ -79,7 +81,7 @@ func EditDistance1(s, t string) (int, error) {
 // current row. This saves memory, but requires copying rows forward.
 func EditDistance2(s, t string) (int, error) {
 	if checkTrivial(s, t) {
-		return 0, errors.New("Trivial Matrix detected")
+		return 0, ErrTrivialMatrix
 	}
 
 	v0 := make([]int, len(t)+1)
@@ -101,7 +103,7 @@ func EditDistance2(s, t string) (int, error) {
 				v0[j+1] + 1,
 				v0[j] + cost,
 			}
-			v1[j+1] = Min(b)
+			v1[j+1] = MinInt(b)
 		}
 		for j := 0; j < len(v0); j++ {
 			v0[j] = v1[j]

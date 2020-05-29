@@ -1,83 +1,96 @@
 package goutil
 
-import (
-	"errors"
-	"math"
-)
-
-// TODO: define error type enum
-
-// MaxInt returns the maximum value of an int slice
-func MaxInt(vals []int) (max int, err error) {
+// MaxInt returns the maximum value of an int slice, or 0 if the slice is empty.
+func MaxInt(vals []int) int {
 	if len(vals) == 0 {
-		err = errors.New("Empty slice")
-		return
+		return 0
+	} else if len(vals) == 1 {
+		return vals[0]
 	}
-	max = math.MinInt32
-	for _, v := range vals {
+
+	max := vals[0]
+
+	for _, v := range vals[1:] {
 		if v > max {
 			max = v
 		}
 	}
-	return
+
+	return max
 }
 
-// MaxInt8 returns the maximum value of an int8 slice
-func MaxInt8(vals []int8) (max int8, err error) {
+// MaxInt8 returns the maximum value of an int8 slice, or 0 if the slice is empty.
+func MaxInt8(vals []int8) int8 {
 	if len(vals) == 0 {
-		err = errors.New("Empty slice")
-		return
+		return 0
+	} else if len(vals) == 1 {
+		return vals[0]
 	}
-	max = math.MinInt8
-	for _, v := range vals {
+
+	max := vals[0]
+
+	for _, v := range vals[1:] {
 		if v > max {
 			max = v
 		}
 	}
-	return
+
+	return max
 }
 
-// MaxInt16 returns the maximum value of an int16 slice
-func MaxInt16(vals []int16) (max int16, err error) {
+// MaxInt16 returns the maximum value of an int16 slice, or 0 if the slice is empty.
+func MaxInt16(vals []int16) int16 {
 	if len(vals) == 0 {
-		err = errors.New("Empty slice")
-		return
+		return 0
+	} else if len(vals) == 1 {
+		return vals[0]
 	}
-	max = math.MinInt16
-	for _, v := range vals {
+
+	max := vals[0]
+
+	for _, v := range vals[1:] {
 		if v > max {
 			max = v
 		}
 	}
-	return
+
+	return max
 }
 
-// MaxInt32 returns the maximum value of an int32 slice
-func MaxInt32(vals []int32) (max int32, err error) {
+// MaxInt32 returns the maximum value of an int32 slice, or 0 if the slice is empty.
+func MaxInt32(vals []int32) int32 {
 	if len(vals) == 0 {
-		err = errors.New("Empty slice")
-		return
+		return 0
+	} else if len(vals) == 1 {
+		return vals[0]
 	}
-	max = math.MinInt32
-	for _, v := range vals {
+
+	max := vals[0]
+
+	for _, v := range vals[1:] {
 		if v > max {
 			max = v
 		}
 	}
-	return
+
+	return max
 }
 
-// MaxInt64 returns the maximum value of an int64 slice
-func MaxInt64(vals []int64) (max int64, err error) {
+// MaxInt64 returns the maximum value of an int64 slice, or 0 if the slice is empty.
+func MaxInt64(vals []int64) int64 {
 	if len(vals) == 0 {
-		err = errors.New("Empty slice")
-		return
+		return 0
+	} else if len(vals) == 1 {
+		return vals[0]
 	}
-	max = math.MinInt64
-	for _, v := range vals {
+
+	max := vals[0]
+
+	for _, v := range vals[1:] {
 		if v > max {
 			max = v
 		}
 	}
-	return
+
+	return max
 }

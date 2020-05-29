@@ -18,6 +18,6 @@ var tests = []struct {
 func TestDivisors(t *testing.T) {
 	for _, x := range tests {
 		out := Divisors(x.n)
-		assert.Equal(t, out, x.divisors, "Should be equal")
+		assert.Equal(t, out, x.divisors)
 	}
 }

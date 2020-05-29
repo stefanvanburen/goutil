@@ -16,8 +16,7 @@ func TestMaxInt(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		out, err := MaxInt(tt.in)
-		assert.NoError(t, err, "ERROR!!!")
-		assert.Equal(t, out, tt.out, "DID NOT MATCH")
+		out := MaxInt(tt.in)
+		assert.Equal(t, out, tt.out)
 	}
 }
