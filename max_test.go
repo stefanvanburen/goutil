@@ -3,11 +3,11 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestMaxInt(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		in  []int
 		out int
 	}{
@@ -16,7 +16,8 @@ func TestMaxInt(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		out := MaxInt(tt.in)
-		assert.Equal(t, out, tt.out)
+		is := is.New(t)
+
+		is.Equal(MaxInt(tt.in), tt.out)
 	}
 }

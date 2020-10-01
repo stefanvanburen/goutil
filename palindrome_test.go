@@ -3,11 +3,13 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestPalindrome(t *testing.T) {
-	var tests = []struct {
+	is := is.New(t)
+
+	tests := []struct {
 		in  string
 		out bool
 	}{
@@ -18,7 +20,7 @@ func TestPalindrome(t *testing.T) {
 	}
 
 	for _, x := range tests {
-		assert.Equal(t, IsPalindrome(x.in), x.out, "Should be equal")
+		is.Equal(IsPalindrome(x.in), x.out)
 	}
 
 }

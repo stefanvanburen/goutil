@@ -4,29 +4,23 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestXORBytes(t *testing.T) {
+	is := is.New(t)
+
 	a, err := hex.DecodeString("1c0111001f010100061a024b53535009181c")
-	if err != nil {
-		t.Error("Unable to decode string")
-	}
+	is.NoErr(err)
 
 	b, err := hex.DecodeString("686974207468652062756c6c277320657965")
-	if err != nil {
-		t.Error("Unable to decode string")
-	}
+	is.NoErr(err)
 
 	out, err := XORBytes(a, b)
-	if err != nil {
-		t.Error("Unable to XOR input strings")
-	}
+	is.NoErr(err)
 
 	expected, err := hex.DecodeString("746865206b696420646f6e277420706c6179")
-	if err != nil {
-		t.Error("Unable to decode string")
-	}
+	is.NoErr(err)
 
-	assert.Equal(t, expected, out, "Should match")
+	is.Equal(expected, out)
 }

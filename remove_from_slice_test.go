@@ -3,10 +3,12 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestRemoveStringFromSlice(t *testing.T) {
+	is := is.New(t)
+
 	tcs := []struct {
 		in       []string
 		find     string
@@ -19,7 +21,7 @@ func TestRemoveStringFromSlice(t *testing.T) {
 
 	for _, tc := range tcs {
 		out, check := RemoveStringFromSlice(tc.find, tc.in)
-		assert.Equal(t, out, tc.out, "Should be equal")
-		assert.Equal(t, check, tc.expected, "Should be equal")
+		is.Equal(out, tc.out)
+		is.Equal(check, tc.expected)
 	}
 }

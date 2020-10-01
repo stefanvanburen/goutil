@@ -3,11 +3,11 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestIndex(t *testing.T) {
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		haystack []string
 		needle   string
 		expected int
@@ -19,13 +19,16 @@ func TestIndex(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, Index(tc.haystack, tc.needle), tc.expected)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(Index(tc.haystack, tc.needle), tc.expected)
 		})
 	}
 }
 
 func TestInclude(t *testing.T) {
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		haystack []string
 		needle   string
 		expected bool
@@ -37,7 +40,10 @@ func TestInclude(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, Include(tc.haystack, tc.needle), tc.expected)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(Include(tc.haystack, tc.needle), tc.expected)
 		})
 	}
 }
@@ -47,7 +53,7 @@ func TestAny(t *testing.T) {
 		return len(s) > 0
 	}
 
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		haystack  []string
 		predicate func(string) bool
 		expected  bool
@@ -59,7 +65,10 @@ func TestAny(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, Any(tc.haystack, tc.predicate), tc.expected)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(Any(tc.haystack, tc.predicate), tc.expected)
 		})
 	}
 }
@@ -69,7 +78,7 @@ func TestAll(t *testing.T) {
 		return len(s) > 0
 	}
 
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		haystack  []string
 		predicate func(string) bool
 		expected  bool
@@ -81,7 +90,10 @@ func TestAll(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, All(tc.haystack, tc.predicate), tc.expected)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(All(tc.haystack, tc.predicate), tc.expected)
 		})
 	}
 }
@@ -91,7 +103,7 @@ func TestFilter(t *testing.T) {
 		return len(s) > 0
 	}
 
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		haystack  []string
 		predicate func(string) bool
 		expected  []string
@@ -103,7 +115,10 @@ func TestFilter(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, Filter(tc.haystack, tc.predicate), tc.expected)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(Filter(tc.haystack, tc.predicate), tc.expected)
 		})
 	}
 }
@@ -113,7 +128,7 @@ func TestMap(t *testing.T) {
 		return s + "!"
 	}
 
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		haystack  []string
 		transform func(string) string
 		expected  []string
@@ -125,7 +140,10 @@ func TestMap(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, Map(tc.haystack, tc.transform), tc.expected)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(Map(tc.haystack, tc.transform), tc.expected)
 		})
 	}
 }

@@ -3,11 +3,13 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestMinInt(t *testing.T) {
-	var tests = []struct {
+	is := is.New(t)
+
+	tests := []struct {
 		in  []int
 		out int
 	}{
@@ -16,7 +18,6 @@ func TestMinInt(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		out := MinInt(tt.in)
-		assert.Equal(t, out, tt.out)
+		is.Equal(MinInt(tt.in), tt.out)
 	}
 }

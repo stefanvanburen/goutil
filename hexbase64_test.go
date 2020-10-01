@@ -3,7 +3,7 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestHexToBase64(t *testing.T) {
@@ -13,11 +13,15 @@ func TestHexToBase64(t *testing.T) {
 	HexBytes := []byte(HexString)
 	Base64Bytes := []byte(Base64String)
 
-	out, _ := HexStringToBase64String(HexString)
+	is := is.New(t)
 
-	assert.Equal(t, out, Base64String, "Should match")
+	out, err := HexStringToBase64String(HexString)
+	is.NoErr(err)
 
-	out2, _ := HexToBase64(HexBytes)
+	is.Equal(out, Base64String)
 
-	assert.Equal(t, out2, Base64Bytes, "Should match")
+	out2, err := HexToBase64(HexBytes)
+	is.NoErr(err)
+
+	is.Equal(out2, Base64Bytes)
 }

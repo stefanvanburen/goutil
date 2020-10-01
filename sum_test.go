@@ -3,11 +3,11 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestSumInt(t *testing.T) {
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		in  []int
 		out int
 	}{
@@ -18,13 +18,16 @@ func TestSumInt(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt(tc.in), tc.out)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(SumInt(tc.in), tc.out)
 		})
 	}
 }
 
 func TestSumInt8(t *testing.T) {
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		in  []int8
 		out int8
 	}{
@@ -35,13 +38,16 @@ func TestSumInt8(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt8(tc.in), tc.out)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(SumInt8(tc.in), tc.out)
 		})
 	}
 }
 
 func TestSumInt16(t *testing.T) {
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		in  []int16
 		out int16
 	}{
@@ -52,13 +58,16 @@ func TestSumInt16(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt16(tc.in), tc.out)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(SumInt16(tc.in), tc.out)
 		})
 	}
 }
 
 func TestSumInt32(t *testing.T) {
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		in  []int32
 		out int32
 	}{
@@ -69,13 +78,16 @@ func TestSumInt32(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt32(tc.in), tc.out)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(SumInt32(tc.in), tc.out)
 		})
 	}
 }
 
 func TestSumInt64(t *testing.T) {
-	var tests = map[string]struct {
+	tests := map[string]struct {
 		in  []int64
 		out int64
 	}{
@@ -86,7 +98,10 @@ func TestSumInt64(t *testing.T) {
 
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, SumInt64(tc.in), tc.out)
+			t.Parallel()
+			is := is.New(t)
+
+			is.Equal(SumInt64(tc.in), tc.out)
 		})
 	}
 }

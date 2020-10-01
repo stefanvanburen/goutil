@@ -3,11 +3,13 @@ package goutil
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/matryer/is"
 )
 
 func TestEditDistance(t *testing.T) {
-	var tests = []struct {
+	is := is.New(t)
+
+	tests := []struct {
 		a   string
 		b   string
 		out int
@@ -21,7 +23,7 @@ func TestEditDistance(t *testing.T) {
 	for _, x := range tests {
 		editdistance1, _ := EditDistance1(x.a, x.b)
 		editdistance2, _ := EditDistance2(x.a, x.b)
-		assert.Equal(t, editdistance1, x.out, "Should be equal")
-		assert.Equal(t, editdistance2, x.out, "Should be equal")
+		is.Equal(editdistance1, x.out)
+		is.Equal(editdistance2, x.out)
 	}
 }

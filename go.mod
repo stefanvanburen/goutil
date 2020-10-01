@@ -1,5 +1,5 @@
 module github.com/svanburen/goutil
 
-go 1.12
+go 1.15
 
-require github.com/stretchr/testify v1.6.1
+require github.com/matryer/is v1.4.0
