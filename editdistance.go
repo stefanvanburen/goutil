@@ -2,7 +2,6 @@ package goutil
 
 import (
 	"errors"
-	"strings"
 )
 
 type matrix [][]int
@@ -113,10 +112,10 @@ func EditDistance2(s, t string) (int, error) {
 }
 
 func checkTrivial(s, t string) bool {
-	if strings.Compare(s, t) == 0 {
+	if len(s) == 0 || len(t) == 0 {
 		return true
 	}
-	if len(s) == 0 || len(t) == 0 {
+	if s == t {
 		return true
 	}
 	return false
