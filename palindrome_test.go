@@ -22,5 +22,4 @@ func TestPalindrome(t *testing.T) {
 	for _, x := range tests {
 		is.Equal(IsPalindrome(x.in), x.out)
 	}
-
 }

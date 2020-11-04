@@ -11,7 +11,7 @@ func XORBytes(a, b []byte) ([]byte, error) {
 		return nil, ErrBuffersNotSameLength
 	}
 
-	var res = make([]byte, len(a))
+	res := make([]byte, len(a))
 	for i := 0; i < len(a); i++ {
 		res[i] = a[i] ^ b[i]
 	}
