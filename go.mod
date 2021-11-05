@@ -1,4 +1,4 @@
-module github.com/svanburen/goutil
+module github.com/stefanvanburen/goutil
 
 go 1.15
 
