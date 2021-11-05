@@ -1,9 +1,0 @@
-image: archlinux
-packages:
-    - go
-sources:
-    - https://github.com/svanburen/goutil
-tasks:
-    - test: |
-        cd goutil
-        go test -race -v ./...
