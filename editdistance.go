@@ -12,21 +12,21 @@ var ErrTrivialMatrix = errors.New("trivial matrix")
 
 // LevenschteinCost is used for best global alignment
 func LevenschteinCost(m matrix, i, j, cost int) int {
-	return MinInt([]int{
-		m[i-1][j] + 1,
-		m[i][j-1] + 1,
-		m[i-1][j-1] + cost,
-	})
+	return Min(
+		m[i-1][j]+1,
+		m[i][j-1]+1,
+		m[i-1][j-1]+cost,
+	)
 }
 
 // SmithWatermanCost is used for best local alignment
 func SmithWatermanCost(m matrix, i, j, cost int) int {
-	return MinInt([]int{
+	return Min(
 		0,
-		m[i-1][j] + 1,
-		m[i][j-1] + 1,
-		m[i-1][j-1] + cost,
-	})
+		m[i-1][j]+1,
+		m[i][j-1]+1,
+		m[i-1][j-1]+cost,
+	)
 }
 
 // EditDistanceMatrix creates a backtraceable matrix
@@ -97,12 +97,11 @@ func EditDistance2(s, t string) (int, error) {
 			if s[i] != t[j] {
 				cost = 1
 			}
-			b := []int{
-				v1[j] + 1,
-				v0[j+1] + 1,
-				v0[j] + cost,
-			}
-			v1[j+1] = MinInt(b)
+			v1[j+1] = Min(
+				v1[j]+1,
+				v0[j+1]+1,
+				v0[j]+cost,
+			)
 		}
 		for j := 0; j < len(v0); j++ {
 			v0[j] = v1[j]

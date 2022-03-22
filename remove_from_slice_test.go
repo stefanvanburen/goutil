@@ -20,7 +20,7 @@ func TestRemoveStringFromSlice(t *testing.T) {
 	}
 
 	for _, tc := range tcs {
-		out, check := RemoveStringFromSlice(tc.find, tc.in)
+		out, check := RemoveFromSlice(tc.find, tc.in)
 		is.Equal(out, tc.out)
 		is.Equal(check, tc.expected)
 	}

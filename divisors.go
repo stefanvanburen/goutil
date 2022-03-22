@@ -1,10 +1,13 @@
 package goutil
 
+import "golang.org/x/exp/constraints"
+
 // Divisors returns an integer slice of the proper divisors of an integer
-func Divisors(n int) (divisors []int) {
-	count := 1
+func Divisors[K constraints.Integer](n K) (divisors []K) {
+	var count K = 1
 	divisors = append(divisors, 1)
-	for i := 2; i <= SqrtInt(n); i++ {
+	var i K = 2
+	for ; i <= SqrtInt(n); i++ {
 		if n%i != 0 {
 			continue
 		}
@@ -38,18 +41,18 @@ func Divisors(n int) (divisors []int) {
 
 // Abundant checks if an integer is an abundant integer
 // An integer is abundant if the sum of its proper divisors is more than the integer
-func Abundant(n int) bool {
-	return SumInt(Divisors(n)) > n
+func Abundant[K constraints.Integer](n K) bool {
+	return Sum(Divisors(n)...) > n
 }
 
 // Perfect checks if an integer is a perfect integer
 // An integer is perfect if the sum of its proper divisors is equal to the integer
-func Perfect(n int) bool {
-	return SumInt(Divisors(n)) == n
+func Perfect[K constraints.Integer](n K) bool {
+	return Sum(Divisors(n)...) == n
 }
 
 // Deficient checks if an integer is a deficient integer
 // An integer is deficient if the sum of its proper divisors is less than the integer
-func Deficient(n int) bool {
-	return SumInt(Divisors(n)) < n
+func Deficient[K constraints.Integer](n K) bool {
+	return Sum(Divisors(n)...) < n
 }

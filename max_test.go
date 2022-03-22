@@ -18,6 +18,6 @@ func TestMaxInt(t *testing.T) {
 	for _, tt := range tests {
 		is := is.New(t)
 
-		is.Equal(MaxInt(tt.in), tt.out)
+		is.Equal(Max(tt.in...), tt.out)
 	}
 }

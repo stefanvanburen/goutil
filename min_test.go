@@ -18,6 +18,6 @@ func TestMinInt(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		is.Equal(MinInt(tt.in), tt.out)
+		is.Equal(Min(tt.in...), tt.out)
 	}
 }

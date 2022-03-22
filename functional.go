@@ -3,7 +3,7 @@ package goutil
 // Blatantly ripped from https://gobyexample.com/collection-functions
 
 // Index returns the first index of the target string `t`, or -1 if no match is found.
-func Index(vs []string, t string) int {
+func Index[K comparable](vs []K, t K) int {
 	for i, v := range vs {
 		if v == t {
 			return i
@@ -14,12 +14,12 @@ func Index(vs []string, t string) int {
 }
 
 // Include returns `true` if the target string t is in the slice.
-func Include(vs []string, t string) bool {
+func Include[K comparable](vs []K, t K) bool {
 	return Index(vs, t) >= 0
 }
 
-// Any returns `true` if one of the strings in the slice satisfies the predicate `f`.
-func Any(vs []string, f func(string) bool) bool {
+// Any returns `true` if one of the Ks in the slice satisfies the predicate `f`.
+func Any[K comparable](vs []K, f func(K) bool) bool {
 	for _, v := range vs {
 		if f(v) {
 			return true
@@ -29,8 +29,8 @@ func Any(vs []string, f func(string) bool) bool {
 	return false
 }
 
-// All returns `true` if all of the strings in the slice satisfy the predicate `f`.
-func All(vs []string, f func(string) bool) bool {
+// All returns `true` if all of the Ks in the slice satisfy the predicate `f`.
+func All[K comparable](vs []K, f func(K) bool) bool {
 	for _, v := range vs {
 		if !f(v) {
 			return false
@@ -40,10 +40,10 @@ func All(vs []string, f func(string) bool) bool {
 	return true
 }
 
-// Filter returns a new slice containing all strings in the slice that satisfy
+// Filter returns a new slice containing all Ks in the slice that satisfy
 // the predicate `f`.
-func Filter(vs []string, f func(string) bool) []string {
-	var vsf []string
+func Filter[K comparable](vs []K, f func(K) bool) []K {
+	var vsf []K
 
 	for _, v := range vs {
 		if f(v) {
@@ -55,9 +55,9 @@ func Filter(vs []string, f func(string) bool) []string {
 }
 
 // Map returns a new slice containing the results of applying the function `f`
-// to each string in the original slice.
-func Map(vs []string, f func(string) string) []string {
-	vsm := make([]string, len(vs))
+// to each K in the original slice.
+func Map[K comparable](vs []K, f func(K) K) []K {
+	vsm := make([]K, len(vs))
 
 	for i, v := range vs {
 		vsm[i] = f(v)
