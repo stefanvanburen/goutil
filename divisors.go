@@ -36,7 +36,7 @@ func Divisors[K constraints.Integer](n K) (divisors []K) {
 			divisors[count] = i
 		}
 	}
-	return
+	return divisors
 }
 
 // Abundant checks if an integer is an abundant integer
