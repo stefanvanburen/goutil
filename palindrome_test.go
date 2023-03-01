@@ -2,24 +2,22 @@ package goutil
 
 import (
 	"testing"
-
-	"github.com/matryer/is"
 )
 
 func TestPalindrome(t *testing.T) {
-	is := is.New(t)
-
+	t.Parallel()
 	tests := []struct {
-		in  string
-		out bool
+		in   string
+		want bool
 	}{
 		{"hello", false},
 		{"hehheh", true},
 		{"hellex", false},
 		{"helleh", true},
 	}
-
 	for _, x := range tests {
-		is.Equal(IsPalindrome(x.in), x.out)
+		if got := IsPalindrome(x.in); got != x.want {
+			t.Errorf("IsPalindrome(%v) = %v, want %v", x.in, got, x.want)
+		}
 	}
 }

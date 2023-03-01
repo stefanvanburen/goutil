@@ -2,24 +2,22 @@ package goutil
 
 import (
 	"testing"
-
-	"github.com/matryer/is"
 )
 
 func TestSqrtInt(t *testing.T) {
-	is := is.New(t)
-
+	t.Parallel()
 	tests := []struct {
-		in  int
-		out int
+		in   int
+		want int
 	}{
 		{4, 2},
 		{9, 3},
 		{100, 10},
 		{144, 12},
 	}
-
-	for _, x := range tests {
-		is.Equal(SqrtInt(x.in), x.out)
+	for _, test := range tests {
+		if got := SqrtInt(test.in); got != test.want {
+			t.Errorf("SqrtInt(%v) = %v, want %v", test.in, got, test.want)
+		}
 	}
 }

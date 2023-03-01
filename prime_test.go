@@ -2,15 +2,13 @@ package goutil
 
 import (
 	"testing"
-
-	"github.com/matryer/is"
 )
 
 func TestPrimeSieve(t *testing.T) {
-	is := is.New(t)
-
-	x := PrimeSieve(1000)
-	for _, e := range x {
-		is.True(IsPrime(e))
+	t.Parallel()
+	for _, got := range PrimeSieve(1000) {
+		if !IsPrime(got) {
+			t.Errorf("IsPrime(%v) from PrimeSieve(1000) = false", got)
+		}
 	}
 }
