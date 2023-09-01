@@ -2,9 +2,8 @@ package goutil
 
 import (
 	"encoding/hex"
+	"slices"
 	"testing"
-
-	"golang.org/x/exp/slices"
 )
 
 func TestXORBytes(t *testing.T) {

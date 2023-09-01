@@ -2,4 +2,4 @@ module github.com/stefanvanburen/goutil
 
 go 1.21
 
-require golang.org/x/exp v0.0.0-20220321173239-a90fa8a75705
+require golang.org/x/exp v0.0.0-20230817173708-d852ddb80c63

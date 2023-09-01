@@ -1,9 +1,8 @@
 package goutil
 
 import (
+	"slices"
 	"testing"
-
-	"golang.org/x/exp/slices"
 )
 
 func TestHexToBase64(t *testing.T) {

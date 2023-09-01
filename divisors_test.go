@@ -1,9 +1,8 @@
 package goutil
 
 import (
+	"slices"
 	"testing"
-
-	"golang.org/x/exp/slices"
 )
 
 func TestDivisors(t *testing.T) {
