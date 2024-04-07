@@ -1,13 +1,15 @@
 package goutil
 
-// IsPalindrome checks if a string is a palindrome.
+// IsPalindrome checks if s is a palindrome.
 func IsPalindrome(s string) bool {
 	l := len(s)
-	for i := 0; i < l/2; i++ {
+	if l == 0 {
+		return false
+	}
+	for i := range l / 2 {
 		if s[i] != s[l-(i+1)] {
 			return false
 		}
 	}
-
 	return true
 }

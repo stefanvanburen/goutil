@@ -10,6 +10,8 @@ func TestPalindrome(t *testing.T) {
 		in   string
 		want bool
 	}{
+		{"", false},
+		{"h", true}, // Single character is a palindrome
 		{"hello", false},
 		{"hehheh", true},
 		{"hellex", false},
