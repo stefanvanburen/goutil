@@ -4,7 +4,7 @@ import "errors"
 
 var ErrBuffersNotSameLength = errors.New("buffers must be same length")
 
-// XORBytes returns the result of XORing together two byte slices, byte by byte.
+// XORBytes returns the result of XORing together a and b, byte by byte.
 // It's required that the input slices are the same length.
 func XORBytes(a, b []byte) ([]byte, error) {
 	if len(a) != len(b) {

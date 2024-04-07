@@ -25,7 +25,6 @@ func Any[K comparable](vs []K, f func(K) bool) bool {
 			return true
 		}
 	}
-
 	return false
 }
 
@@ -36,7 +35,6 @@ func All[K comparable](vs []K, f func(K) bool) bool {
 			return false
 		}
 	}
-
 	return true
 }
 
@@ -44,13 +42,11 @@ func All[K comparable](vs []K, f func(K) bool) bool {
 // the predicate `f`.
 func Filter[K comparable](vs []K, f func(K) bool) []K {
 	var vsf []K
-
 	for _, v := range vs {
 		if f(v) {
 			vsf = append(vsf, v)
 		}
 	}
-
 	return vsf
 }
 
@@ -58,10 +54,8 @@ func Filter[K comparable](vs []K, f func(K) bool) []K {
 // to each K in the original slice.
 func Map[K comparable](vs []K, f func(K) K) []K {
 	vsm := make([]K, len(vs))
-
 	for i, v := range vs {
 		vsm[i] = f(v)
 	}
-
 	return vsm
 }
