@@ -1,12 +1,15 @@
-name: Go Test
-on: [push]
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 jobs:
-  run:
-    name: Test
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-go@v5
       with:
-        go-version: 'stable'
+        go-version-file: 'go.mod'
     - uses: actions/checkout@v4
     - run: go test -v -race ./...
