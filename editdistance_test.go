@@ -17,7 +17,6 @@ func TestEditDistance(t *testing.T) {
 		{"hello", "h3ll0", 2},
 	}
 	for _, test := range tests {
-		test := test
 		t.Run("EditDistance1", func(t *testing.T) {
 			t.Parallel()
 			if got := EditDistance1(test.a, test.b); got != test.want {

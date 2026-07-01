@@ -15,7 +15,6 @@ func TestSumInt(t *testing.T) {
 		"negative": {[]int{-1, -2, -3}, -6},
 	}
 	for name, tc := range tests {
-		tc := tc
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			if got := Sum(tc.in...); got != tc.want {

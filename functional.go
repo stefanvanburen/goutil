@@ -2,6 +2,8 @@ package goutil
 
 // Blatantly ripped from https://gobyexample.com/collection-functions
 
+import "slices"
+
 // Index returns the first index of the target string `t`, or -1 if no match is found.
 func Index[K comparable](vs []K, t K) int {
 	for i, v := range vs {
@@ -20,12 +22,7 @@ func Include[K comparable](vs []K, t K) bool {
 
 // Any returns `true` if one of the Ks in the slice satisfies the predicate `f`.
 func Any[K comparable](vs []K, f func(K) bool) bool {
-	for _, v := range vs {
-		if f(v) {
-			return true
-		}
-	}
-	return false
+	return slices.ContainsFunc(vs, f)
 }
 
 // All returns `true` if all of the Ks in the slice satisfy the predicate `f`.

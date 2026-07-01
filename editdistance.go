@@ -44,7 +44,7 @@ func EditDistance2(s, t string) int {
 	v0 := make([]int, len(t)+1)
 	v1 := make([]int, len(t)+1)
 
-	for i := 0; i < len(v0); i++ {
+	for i := range v0 {
 		v0[i] = i
 	}
 
@@ -61,7 +61,7 @@ func EditDistance2(s, t string) int {
 				v0[j]+cost,
 			)
 		}
-		for j := 0; j < len(v0); j++ {
+		for j := range v0 {
 			v0[j] = v1[j]
 		}
 	}

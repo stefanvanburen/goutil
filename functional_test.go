@@ -17,7 +17,6 @@ func TestIndex(t *testing.T) {
 		"multiple matches": {[]string{"one", "two", "two"}, "two", 1},
 	}
 	for name, tc := range tests {
-		tc := tc
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			if got := Index(tc.haystack, tc.needle); got != tc.want {
@@ -39,7 +38,6 @@ func TestInclude(t *testing.T) {
 		"multiple matches": {[]string{"one", "two", "two"}, "two", true},
 	}
 	for name, tc := range tests {
-		tc := tc
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			if got := Include(tc.haystack, tc.needle); got != tc.want {
@@ -61,7 +59,6 @@ func TestAny(t *testing.T) {
 		"all match":  {[]string{"hi", "bye"}, hasLength, true},
 	}
 	for name, tc := range tests {
-		tc := tc
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			if got := Any(tc.haystack, tc.predicate); got != tc.want {
@@ -83,7 +80,6 @@ func TestAll(t *testing.T) {
 		"all match":  {[]string{"hi", "bye"}, hasLength, true},
 	}
 	for name, tc := range tests {
-		tc := tc
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			if got := All(tc.haystack, tc.predicate); got != tc.want {
@@ -105,7 +101,6 @@ func TestFilter(t *testing.T) {
 		"all match":  {[]string{"hi", "bye"}, hasLength, []string{"hi", "bye"}},
 	}
 	for name, tc := range tests {
-		tc := tc
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			if got := Filter(tc.haystack, tc.predicate); !slices.Equal(got, tc.want) {
@@ -129,7 +124,6 @@ func TestMap(t *testing.T) {
 		"all match":  {[]string{"hi", "bye"}, exclamation, []string{"hi!", "bye!"}},
 	}
 	for name, tc := range tests {
-		tc := tc
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 			if got := Map(tc.haystack, tc.transform); !slices.Equal(got, tc.want) {
