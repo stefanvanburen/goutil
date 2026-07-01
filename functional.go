@@ -5,22 +5,28 @@ package goutil
 import "slices"
 
 // Index returns the first index of the target string `t`, or -1 if no match is found.
+//
+// Deprecated: use [slices.Index] instead.
+//
+//go:fix inline
 func Index[K comparable](vs []K, t K) int {
-	for i, v := range vs {
-		if v == t {
-			return i
-		}
-	}
-
-	return -1
+	return slices.Index(vs, t)
 }
 
 // Include returns `true` if the target string t is in the slice.
+//
+// Deprecated: use [slices.Contains] instead.
+//
+//go:fix inline
 func Include[K comparable](vs []K, t K) bool {
-	return Index(vs, t) >= 0
+	return slices.Contains(vs, t)
 }
 
 // Any returns `true` if one of the Ks in the slice satisfies the predicate `f`.
+//
+// Deprecated: use [slices.ContainsFunc] instead.
+//
+//go:fix inline
 func Any[K comparable](vs []K, f func(K) bool) bool {
 	return slices.ContainsFunc(vs, f)
 }
