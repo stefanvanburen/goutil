@@ -1,9 +1,7 @@
 package goutil
 
-import "golang.org/x/exp/constraints"
-
 // IsPrime checks if n is prime.
-func IsPrime[K constraints.Integer](n K) bool {
+func IsPrime[K Integer](n K) bool {
 	if n == 1 {
 		return false
 	}
@@ -19,7 +17,7 @@ func IsPrime[K constraints.Integer](n K) bool {
 }
 
 // PrimeSieve implements the Sieve of Eratosthenes.
-func PrimeSieve[K constraints.Integer](max K) []K {
+func PrimeSieve[K Integer](max K) []K {
 	bools := make([]bool, max)
 
 	var primes []K
