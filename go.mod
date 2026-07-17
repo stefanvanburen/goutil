@@ -1,3 +1,3 @@
-module github.com/stefanvanburen/goutil
+module go.vanburen.xyz/goutil
 
 go 1.25.0
